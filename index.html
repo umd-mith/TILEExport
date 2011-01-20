@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>TILE Export Plugin Demo</title>
+	<!-- CSS styles -->
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen, projection" charset="utf-8">
+	<!-- Necessary JS files -->
+	<script type="text/javascript" language="javascript" src="jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="tile1.0.js"></script>
+	<script type="text/javascript" language="javascript" src="export1.0.js"></script>
+	<script type="text/javascript" language="javascript" src="exportJSONXML.js"></script>
+	
+</head>
+
+<body>
+	<div class="az header"><div class="az logo"><img src="skins/columns/images/tile.gif" alt="TILE: Text-Image Linking Environment" /></div>
+	<div id="azglobalmenu" class="az globalmenu"><p><a id="restartall" href="" title="Discard all changes and start over">Restart</a> | <a id="tilehelp" title="Go to the TILE documentation page" href="http://mith.umd.edu/tile/documentation">Help</a> | <span class="version">version 0.80</span></p></div>
+	</div>
+	<!-- Submit Form for save progress-->
+	<form id="inv_SaveProgress_Form" class="submitFormHidden" method="POST" action="PHP/forceJSON.php">
+		<input id="uploadData" name="uploadData" class="submitFormHidden" type="text"/>
+	</form>
+	<!-- -->
+	<div class="az main twocol">
+		<div id="az_log" class="az log"><div class="az inner"><div id="tile_toolbar" class="toolbar"></div><div id="logbar_list" class="az"></div></div></div>
+		<div id="az_activeBox" class="az activeBox"></div>
+		<div id="azcontentarea" class="az content"></div>
+	<script>
+	
+	$(function(){
+		// start up new TILE ENGINE with ExportTile plugin included.
+		// Usually, TILE_ENGINE has far more plugins installed in order 
+		// to make it more useful, but the purposes of this demonstration
+		// we just have the one.
+		var engine=new TILE_ENGINE({toolSet:[ExportTile]});
+	});
+		
+	</script>
+	
+</body>
+</html>
