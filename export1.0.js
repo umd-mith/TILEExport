@@ -110,6 +110,7 @@ var ExportTile={
 		// self.dialog.json=engine.getJSON();
 		
 	},
+	// Parse out into a TEI-format XML string
 	transformTEI:function(xml){
 		var self=this;
 		var output='<?xml version="1.0" encoding="UTF-8"?>\n<TEI xmlns="http://www.tei-c.org/ns/1.0">';
@@ -122,6 +123,7 @@ var ExportTile={
 		output+="</text></body>";
 		return output;
 	},
+	// use a user-defined script to parse out the JSON
 	useScript:function(json){
 		var self=this;
 		//get src script from user
