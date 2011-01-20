@@ -10,6 +10,18 @@ Requires:
 TILE Source (tile1.0.js)  
 jQuery  
 
+Installing
+===
+I. For this version:  
+Make sure to include the necessary header files (Note: we are using the default style for TILE in style.css):
+<pre><code> <!-- CSS styles -->
+<link rel="stylesheet" href="style.css" type="text/css" media="screen, projection" charset="utf-8">
+<!-- Necessary JS files -->
+<script type="text/javascript" language="javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="tile1.0.js"></script>
+<script type="text/javascript" language="javascript" src="export1.0.js"></script>
+<script type="text/javascript" language="javascript" src="exportJSONXML.js"></script>
+</code></pre>
 
 API
 ===
