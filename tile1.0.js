@@ -1067,7 +1067,7 @@ var TILEPAGE=null;
 			// 				// 				});
 			// 			});
 			// check if there is json data 
-			checkJSON();
+			// checkJSON();
 	};
 	TILE_ENGINE.prototype={
 		// Called to see if there is a JSON object stored in the PHP session() 

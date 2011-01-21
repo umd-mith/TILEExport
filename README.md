@@ -6,20 +6,27 @@ MITH, 2011
 
 exportJSONXML.js is code taken from the web to transform a generic JSON object into XML. 
 
-Requires:  
-TILE Source (tile1.0.js)  
-jQuery  
+These instructions assume:
+===
+
+* You've already loaded the TILE source and are somewhat familiar with it
+* You are familiar with HTML, CSS, and the jQuery javascript API (www.jquery.com)
+ 
 
 Installing
 ===
 I. For including into TILE source:  
 Make sure to include the necessary header files for TILE, which are for jQuery, the jQuery UI, the jQuery UI ColorPicker plugin, and the TILE 1.0 source:
+*NOTE: Paths are relative to the example shown here, for the actual TILE source, you will use different paths*
 
 	<!-- CSS styles -->
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen, projection" charset="utf-8">
 	<!-- Necessary JS files -->
 	<script type="text/javascript" language="javascript" src="jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" language="javascript" src="tile1.0.js"></script>
+	<script type="text/javascript" src="plugins/colorpicker/js/colorpicker.js"></script>
+    <script type="text/javascript" src="plugins/colorpicker/js/eye.js"></script>
+    <script type="text/javascript" src="plugins/colorpicker/js/utils.js"></script>
 	
 
 After adding all of the necessary files into the header, make sure to include 
@@ -34,6 +41,14 @@ After adding the necessary files, you will need to insert the Export dialog plug
 		var engine=new TILE_ENGINE({toolSet:[ExportTile]});
 	
 	</script>
+	
+How the Plugin Works
+===
+
+TILE's *PluginController* object will go through and initialize each plugin at the start of the *engine* construction. It calls the *start()* function of your plugin and passes an instance of *engine* to it. Using *engine*, your code can grab the current JSON session data with *engine.getJSON()* and start setting up preliminary data. 
+
+In the case of the Export plugin, the *start()* is used to create the Export Plugin's HTML and attach it to the <body> tag. Then, multiple callbacks and HTML data are parsed out, so that when a user clicks the X, it closes the dialog, or when they click on Export to JSON XML, it actually does this. More about the different functions are listed in the *API*.  
+
 	
 API
 ===
