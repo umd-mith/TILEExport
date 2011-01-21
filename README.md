@@ -12,8 +12,41 @@ These instructions assume:
 * You've already loaded the TILE source and are somewhat familiar with it
 * You are familiar with HTML, CSS, and the jQuery javascript API (www.jquery.com)
  
+	
+How the Plugin Works
+===
 
-Installing into TILE
+TILE's *PluginController* object will go through and initialize each plugin at the start of the *engine* construction. The Plugin Controller is a private object that can be accessed through the TILE_ENGINE object in tile1.0.js. During the TILE constructor call, PluginController calls the *start()* function of your plugin and passes an instance of *engine* to it. Using *engine*, your code can grab the current JSON session data with *engine.getJSON()* and start setting up preliminary data. 
+
+A variable *id* is given to identify the plugin from other plugins in PluginController. 
+
+In the case of the Export plugin, the *start()* is used to create the Export Plugin's HTML and attach it to the <body> tag. Then, multiple callbacks and HTML data are parsed out, so that when a user clicks the X, it closes the dialog, or when they click on Export to JSON XML, it actually does this. More about the different functions are listed in the *API*.  
+
+*loadJSON()* is used by PluginController to send new data to plugins. This is called every time an object is added to the JSON session, or when a new image is being displayed (e.g. A user clicks Prev or Next in the Image Tagger toolbar). If you're plugin needs to have up-to-date data from the JSON session, then use this function and the passed *engine* variable to get that updated data.  
+	
+API
+===
+* **_export1.0.js_** is a wrapper for TILE. It includes a start() and loadJSON() functions, which are standard for TILE plugin wrappers. 
+
+*start*(engine {Object})  
+Sets up the necessary elements and function calls. Gets passed engine by default, which is the public 
+version of the TILE source code. (See TILE_ENGINE API for more details)
+
+*loadJSON*()
+Not used 
+
+*transformTEI*(xml {String})
+Takes passed XML string and parses it into TEI. Returns string representing TEI-formatted XML.
+
+*useScript*(file {String})
+
+* **_exportJSONXML.js_** includes functionality for changing a JSON Object into an XML string, retaining the JSON Objects hierarchy and tags.
+
+*json2xml(obj)*
+Takes a JSON Object *obj* and outputs an XML string. 
+
+
+Extra: Installing into TILE
 ===
 I. For including into TILE source:  
 Make sure to include the necessary header files for TILE, which are for jQuery, the jQuery UI, the jQuery UI ColorPicker plugin, and the TILE 1.0 source:
@@ -41,32 +74,3 @@ After adding the necessary files, you will need to insert the Export dialog plug
 		var engine=new TILE_ENGINE({toolSet:[ExportTile]});
 	
 	</script>
-	
-How the Plugin Works
-===
-
-TILE's *PluginController* object will go through and initialize each plugin at the start of the *engine* construction. It calls the *start()* function of your plugin and passes an instance of *engine* to it. Using *engine*, your code can grab the current JSON session data with *engine.getJSON()* and start setting up preliminary data. 
-
-In the case of the Export plugin, the *start()* is used to create the Export Plugin's HTML and attach it to the <body> tag. Then, multiple callbacks and HTML data are parsed out, so that when a user clicks the X, it closes the dialog, or when they click on Export to JSON XML, it actually does this. More about the different functions are listed in the *API*.  
-
-	
-API
-===
-* _export1.0.js_ is a wrapper for TILE. It includes a start() and loadJSON() functions, which are standard for TILE plugin wrappers. 
-
-*start*(engine {Object})  
-Sets up the necessary elements and function calls. Gets passed engine by default, which is the public 
-version of the TILE source code. (See TILE_ENGINE API for more details)
-
-*loadJSON*()
-Not used 
-
-*transformTEI*(xml {String})
-Takes passed XML string and parses it into TEI. Returns string representing TEI-formatted XML.
-
-*useScript*(file {String})
-
-* _exportJSONXML.js_ includes functionality for changing a JSON Object into an XML string, retaining the JSON Objects hierarchy and tags.
-
-*json2xml(obj)*
-Takes a JSON Object *obj* and outputs an XML string. 
