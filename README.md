@@ -13,7 +13,7 @@ These instructions assume:
 * You are familiar with HTML, CSS, and the jQuery javascript API (www.jquery.com)
  
 
-Installing
+Installing into TILE
 ===
 I. For including into TILE source:  
 Make sure to include the necessary header files for TILE, which are for jQuery, the jQuery UI, the jQuery UI ColorPicker plugin, and the TILE 1.0 source:
@@ -52,7 +52,7 @@ In the case of the Export plugin, the *start()* is used to create the Export Plu
 	
 API
 ===
-_export1.0.js_ is a wrapper for TILE. It includes a start() and loadJSON() functions, which are standard for TILE plugin wrappers. 
+* _export1.0.js_ is a wrapper for TILE. It includes a start() and loadJSON() functions, which are standard for TILE plugin wrappers. 
 
 *start*(engine {Object})  
 Sets up the necessary elements and function calls. Gets passed engine by default, which is the public 
@@ -66,3 +66,7 @@ Takes passed XML string and parses it into TEI. Returns string representing TEI-
 
 *useScript*(file {String})
 
+* _exportJSONXML.js_ includes functionality for changing a JSON Object into an XML string, retaining the JSON Objects hierarchy and tags.
+
+*json2xml(obj)*
+Takes a JSON Object *obj* and outputs an XML string. 
